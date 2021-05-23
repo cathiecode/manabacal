@@ -1,6 +1,7 @@
 const fetch = require("node-fetch");
 const parseDate = require("date-fns/parse");
 const formatDate = require("date-fns/format");
+const subDate = require("date-fns/sub");
 const zonedTimeToUtc = require("date-fns-tz/zonedTimeToUtc");
 const utcToZonedTime = require("date-fns-tz/utcToZonedTime");
 const { JSDOM } = require("jsdom");
@@ -96,7 +97,8 @@ const assignmentsToIcal = (owner, assignment_array) => {
             summary: assignment.title,
             description: assignment.course,
             url: `https://manaba.fun.ac.jp/ct/${assignment.rel_url}`,
-            start: assignment.deadline
+            start: subDate(assignment.deadline, {minutes: 15}),
+            end:   assignment.deadline
         })
     });
     return cal;
