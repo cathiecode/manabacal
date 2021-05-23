@@ -7,7 +7,7 @@ const { JSDOM } = require("jsdom");
 const genIcal = require('ical-generator');
 
 const default_header = {
-    "User-Agent": "manabacal/1.0 manabacal.cathie.codes cathiecode-at-gmail-dot-com"
+    "User-Agent": "manaba-cathie-codes/1.0 manaba.cathie.codes cathiecode-at-gmail-dot-com"
 }
 
 const parseDeadlineToUTC = origin_date_utc => deadline_string => {
