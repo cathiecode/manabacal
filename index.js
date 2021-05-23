@@ -127,7 +127,7 @@ app.get("/:id.:ext", (req, res) => {
             res.end();
         })
         .catch(e => {
-            res.status(404);
+            res.status(502);
             res.end();
             throw e;
         })
