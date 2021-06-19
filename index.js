@@ -15,6 +15,12 @@ app.get("/:id.:ext", (req, res) => {
     const id = req.params.id;
     const password = req.query.pw;
     const ext = req.params.ext;
+    if (!password) {
+        throw "Password is empty.";
+    }
+    if (!ext) {
+        throw "Please specify extention.";
+    }
     getLoggedInManamaSession(id, password)
         .then(fetchAssignments)
         .then(result => {
