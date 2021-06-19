@@ -4,14 +4,18 @@ const zonedTimeToUtc = require("date-fns-tz/zonedTimeToUtc");
 const { JSDOM } = require("jsdom");
 
 const parseDeadlineToUTC = (origin_date_utc) => (deadline_string) => {
-    return zonedTimeToUtc(
-        parseDate(
-            deadline_string,
-            "受付終了日時：yyyy-MM-dd HH:mm",
-            utcToZonedTime(origin_date_utc, "Asia/Tokyo")
-        ),
-        "Asia/Tokyo"
-    );
+    try {
+        return zonedTimeToUtc(
+            parseDate(
+                deadline_string,
+                "受付終了日時：yyyy-MM-dd HH:mm",
+                utcToZonedTime(origin_date_utc, "Asia/Tokyo")
+            ),
+            "Asia/Tokyo"
+        );
+    } catch(e) {
+        return null;
+    }
 };
 
 const parseInfoListTitle = (title_string) => {
