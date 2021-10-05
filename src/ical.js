@@ -8,7 +8,7 @@ const assignmentsToIcal = (owner, assignment_array) => {
         .forEach(assignment => {
         cal.createEvent({
             summary: assignment.title,
-            description: assignment.course,
+            description: `${assignment.course} https://manaba.fun.ac.jp/ct/${assignment.rel_url}`,
             url: `https://manaba.fun.ac.jp/ct/${assignment.rel_url}`,
             start: subDate(assignment.deadline, {minutes: 15}),
             end:   assignment.deadline
